@@ -1,5 +1,5 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
-const ParametersContext = createContext([], () => {})
+const ParametersContext = createContext([], () => {});
 
-export default ParametersContext
+export default ParametersContext;

@@ -1,5 +1,5 @@
-import { Component } from "react";
-import { Link } from "react-router-dom";
+import { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class ErrorBoundary extends Component {
   state = { hasError: false };
@@ -17,7 +17,7 @@ class ErrorBoundary extends Component {
       return (
         <h2>
           There was an error.
-          <Link to={"/"}>Click here</Link> or wait for 5 seconds and we will do
+          <Link to={'/'}>Click here</Link> or wait for 5 seconds and we will do
           it for you.
         </h2>
       );
