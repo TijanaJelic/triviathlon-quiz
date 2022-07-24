@@ -117,7 +117,7 @@ const Questions = ({ setFinalScore }) => {
               ))}
           </div>
           <Countdown
-            date={Date.now() + 100000}
+            date={Date.now() + 5000}
             renderer={timerRenderer}
             overtime={true}
           />
