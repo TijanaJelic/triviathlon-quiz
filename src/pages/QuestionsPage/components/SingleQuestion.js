@@ -1,12 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../../../components/Spinner/LoadingSpinner';
 import Countdown from 'react-countdown';
 
 const randomNum = (maxNum) => Math.floor(Math.random() * Math.floor(maxNum));
 
-const SingleQuestion = ({ loading, questions, setFinalScore }) => {
+const SingleQuestion = ({
+  loading,
+  questions,
+  numOfQuestions,
+  setFinalScore,
+}) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [isDisable, setIsDisable] = useState(false);
@@ -82,6 +87,9 @@ const SingleQuestion = ({ loading, questions, setFinalScore }) => {
   return (
     <div className="questions-container">
       {loading && <LoadingSpinner />}
+      <p className="current-question">
+        {currentQuestion + 1}/{numOfQuestions}
+      </p>
       <h2>
         {questions.length &&
           currentQuestion !== questions.length &&
@@ -97,6 +105,9 @@ const SingleQuestion = ({ loading, questions, setFinalScore }) => {
           overtime={true}
         />
       </div>
+      <Link to={'/'} className="back-home">
+        Back Home
+      </Link>
     </div>
   );
 };

@@ -28,6 +28,7 @@ const Questions = ({ setFinalScore }) => {
       <SingleQuestion
         loading={loading}
         questions={questions}
+        numOfQuestions={numOfQuestions}
         setFinalScore={setFinalScore}
       />
     </div>
