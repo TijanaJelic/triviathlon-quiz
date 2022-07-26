@@ -23,18 +23,18 @@ const Categories = ({ setCategory, setParameters, numOfQuestions }) => {
     <div className="categories-container">
       <h2>Choose category</h2>
       <div className="all-categories">
-        {Object.keys(categories).map((category) => (
+        {Object.entries(categories).map((category) => (
           <button
-            key={category}
+            key={category[0]}
             className={
-              activeClass === category ? 'category active' : 'category'
+              activeClass === category[0] ? 'category active' : 'category'
             }
             onClick={(e) => {
-              setActiveClass(category);
-              setCategory(e.target.textContent);
-              setParameters([category, numOfQuestions]);
+              setActiveClass(category[0]);
+              setCategory(category[1]);
+              setParameters([category[1], numOfQuestions]);
             }}>
-            {category}
+            {category[0]}
           </button>
         ))}
       </div>
