@@ -12,10 +12,30 @@ const SingleQuestion = ({
   numOfQuestions,
   setFinalScore,
 }) => {
+  const [tabHasFocus, setTabHasFocus] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [isDisable, setIsDisable] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleFocus = () => {
+      setTabHasFocus(true);
+    };
+
+    const handleBlur = () => {
+      navigate('/play-again');
+      setTabHasFocus(false);
+    };
+
+    window.addEventListener('focus', handleFocus);
+    window.addEventListener('blur', handleBlur);
+
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('blur', handleBlur);
+    };
+  }, []);
 
   useEffect(() => {
     setFinalScore(score);
@@ -105,7 +125,7 @@ const SingleQuestion = ({
           currentQuestion !== questions.length &&
           getAnswers()}
         <Countdown
-          date={Date.now() + 100000}
+          date={Date.now() + 20000}
           renderer={timerRenderer}
           overtime={true}
         />
