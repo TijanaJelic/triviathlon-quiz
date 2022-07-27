@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../../../components/Spinner/LoadingSpinner';
@@ -16,11 +16,19 @@ const SingleQuestion = ({
   const [score, setScore] = useState(0);
   const [isDisable, setIsDisable] = useState(false);
   const navigate = useNavigate();
-  // randomNum(questions[currentQuestion].incorrectAnswers.length) DODATI UMESTO 0 KOD SPLICE
+
+  useEffect(() => {
+    setFinalScore(score);
+  }, [score]);
+
   const getAnswers = () => {
     let answers = questions[currentQuestion].incorrectAnswers;
     if (!answers.includes(questions[currentQuestion].correctAnswer)) {
-      answers.splice(0, 0, questions[currentQuestion].correctAnswer);
+      answers.splice(
+        randomNum(questions[currentQuestion].incorrectAnswers.length),
+        0,
+        questions[currentQuestion].correctAnswer,
+      );
     }
 
     return (
@@ -30,9 +38,7 @@ const SingleQuestion = ({
             className="answer"
             key={answer}
             onClick={(e) => {
-              console.log(score);
               setIsDisable(true);
-              isCorrect(e);
               handleClickAnswer(e);
             }}
             disabled={isDisable}>
@@ -43,16 +49,8 @@ const SingleQuestion = ({
     );
   };
 
-  const showNextQuestion = () => {
-    if (currentQuestion + 1 === questions.length) {
-      setFinalScore(score);
-      navigate('/score');
-    } else {
-      setCurrentQuestion(currentQuestion + 1);
-    }
-  };
-
   const handleClickAnswer = (e) => {
+    isCorrect(e);
     const handleAnswer = () => {
       showNextQuestion();
       setIsDisable(false);
@@ -60,10 +58,17 @@ const SingleQuestion = ({
     setTimeout(handleAnswer, 500);
   };
 
+  const showNextQuestion = () => {
+    if (currentQuestion + 1 === questions.length) {
+      navigate('/score');
+    } else {
+      setCurrentQuestion(currentQuestion + 1);
+    }
+  };
+
   const isCorrect = (e) => {
     if (e.target.textContent === questions[currentQuestion].correctAnswer) {
       setScore(score + 1);
-      console.log(score);
       e.target.style.backgroundColor = '#1C7C54';
       e.target.style.color = '#fff';
     } else {
