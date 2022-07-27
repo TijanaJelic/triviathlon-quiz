@@ -30,6 +30,7 @@ const SingleQuestion = ({
             className="answer"
             key={answer}
             onClick={(e) => {
+              console.log(score);
               setIsDisable(true);
               isCorrect(e);
               handleClickAnswer(e);
@@ -53,9 +54,6 @@ const SingleQuestion = ({
 
   const handleClickAnswer = (e) => {
     const handleAnswer = () => {
-      if (e.target.textContent === questions[currentQuestion].correctAnswer) {
-        setScore(score + 1);
-      }
       showNextQuestion();
       setIsDisable(false);
     };
@@ -64,6 +62,8 @@ const SingleQuestion = ({
 
   const isCorrect = (e) => {
     if (e.target.textContent === questions[currentQuestion].correctAnswer) {
+      setScore(score + 1);
+      console.log(score);
       e.target.style.backgroundColor = '#1C7C54';
       e.target.style.color = '#fff';
     } else {

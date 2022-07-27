@@ -4,9 +4,12 @@
     transform: translate(-50%, -50%);
 
 }
-
+html,body {
+    min-height: 100vh;
+}
 .questions-container {
     max-width: 550px;
+    width: 100%;
     padding: 44px;
     background-color: #fff;
     box-shadow: 4px 4px 0px 0px #000000;
@@ -73,4 +76,10 @@
     color: #fff;
     padding: 10px 30px;
     border-radius: 25px;
+}
+
+@media only screen and (max-width: 1100px) {
+    .questions-container {
+        width: 92vw;
+    }
 }
