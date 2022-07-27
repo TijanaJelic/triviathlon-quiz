@@ -1,0 +1,31 @@
+.score-container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.result {
+    margin: 30px;
+}
+
+.num-box {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 15px;
+}
+
+.back-home-bttn {
+    margin-top: 40px;
+    border-radius: 25px;
+    background-color: #000;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 400;
+}
