@@ -65,6 +65,7 @@ p, button {
 
 .categories-container {
     display: flex;
+    min-height: 520px;
     flex-direction: column;
     align-items: center;
     border: 3px solid #1C7C54;
@@ -114,8 +115,7 @@ p, button {
 
 .category {
     background-color: #fff;
-    min-width: 190px;
-    max-width: 195px;
+    width: 190px;
     padding: 20px 35px;
     border: none;
     border-radius: 25px;
@@ -223,7 +223,7 @@ p, button {
     }
 
     .categories-container, .num-of-questions-container, .rules-container {
-        max-width: 95%;
+        width: 95%;
         margin-bottom: 30px;
     }
 

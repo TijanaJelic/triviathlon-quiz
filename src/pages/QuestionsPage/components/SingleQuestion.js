@@ -24,7 +24,7 @@ const SingleQuestion = ({
     };
 
     const handleBlur = () => {
-      navigate('/play-again');
+      navigate('/');
       setTabHasFocus(false);
     };
 

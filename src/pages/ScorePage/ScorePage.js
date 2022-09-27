@@ -5,7 +5,6 @@ import './score.css';
 
 const ScorePage = ({ finalScore }) => {
   const parameters = useContext(ParametersContext);
-  console.log(parameters);
 
   return (
     <div className="score-container">
