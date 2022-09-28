@@ -66,6 +66,7 @@ p, button {
 .categories-container {
     display: flex;
     min-height: 520px;
+    width: 515px;
     flex-direction: column;
     align-items: center;
     border: 3px solid #1C7C54;
