@@ -10,7 +10,7 @@ const ScorePage = ({ finalScore }) => {
     <div className="score-container">
       Your score is{' '}
       <span className="result">
-        <span className="num-box">{finalScore}</span> of{' '}
+        <span className="num-box">{finalScore}</span> /{' '}
         <span className="num-box">{parameters[0][1]}</span>
       </span>
       <Link to={'/'} className="back-home-bttn">
