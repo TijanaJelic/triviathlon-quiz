@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../../../components/Spinner/LoadingSpinner';
-import Countdown from 'react-countdown';
+import Countdown from './Countdown';
 
 const randomNum = (maxNum) => Math.floor(Math.random() * Math.floor(maxNum));
 
@@ -16,6 +16,7 @@ const SingleQuestion = ({
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [isDisable, setIsDisable] = useState(false);
+  const [seconds, setSeconds] = useState(20);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -74,6 +75,7 @@ const SingleQuestion = ({
     const handleAnswer = () => {
       showNextQuestion();
       setIsDisable(false);
+      setSeconds(20);
     };
     setTimeout(handleAnswer, 500);
   };
@@ -97,18 +99,6 @@ const SingleQuestion = ({
     }
   };
 
-  const timerRenderer = ({ minutes, seconds, completed }) => {
-    if (completed) {
-      showNextQuestion();
-    } else {
-      return (
-        <span className="countdown">
-          {minutes}:{seconds < 10 ? <span>0{seconds}</span> : seconds}
-        </span>
-      );
-    }
-  };
-
   return (
     <div className="questions-container">
       {loading && <LoadingSpinner />}
@@ -125,9 +115,9 @@ const SingleQuestion = ({
           currentQuestion !== questions.length &&
           getAnswers()}
         <Countdown
-          date={Date.now() + 20000}
-          renderer={timerRenderer}
-          overtime={true}
+          showNextQuestion={showNextQuestion}
+          seconds={seconds}
+          setSeconds={setSeconds}
         />
       </div>
       <Link to={'/'} className="back-home">
